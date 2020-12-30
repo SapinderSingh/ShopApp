@@ -4,11 +4,13 @@ import 'package:shop_app/screens/edit_product_screen.dart';
 
 class UserProductItem extends StatelessWidget {
   final String title, imageUrl, id;
+  final Function deleteProduct;
 
   const UserProductItem({
     this.title,
     this.imageUrl,
     this.id,
+    this.deleteProduct,
   });
 
   @override
@@ -35,7 +37,9 @@ class UserProductItem extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.delete),
-              onPressed: () {},
+              onPressed: () {
+                deleteProduct(id);
+              },
               color: Theme.of(context).errorColor,
             ),
           ],
