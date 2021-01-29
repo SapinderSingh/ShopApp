@@ -23,7 +23,6 @@ class ProductsOverviewScreen extends StatefulWidget {
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _isInit = true;
   var _showOnlyFavorites = false;
-
   var _isLoading = false;
 
   void didChangeDependencies() {
