@@ -62,11 +62,15 @@ class _OrderTileState extends State<OrderTile> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              '${prod.quantity} x \$${prod.price}',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey,
+                            Container(
+                              width: 100,
+                              height: 50,
+                              child: Text(
+                                '${prod.quantity} x \$${prod.price}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
                               ),
                             )
                           ],

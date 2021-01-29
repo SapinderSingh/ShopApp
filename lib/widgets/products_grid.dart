@@ -10,13 +10,17 @@ class ProductsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final productsData = Provider.of<ProductsProvider>(context);
     final products = showFavs ? productsData.favoriteItems : productsData.items;
-    return ListView.builder(
-      itemCount: products.length,
-      padding: const EdgeInsets.all(10.0),
-      itemBuilder: (_, index) => ChangeNotifierProvider.value(
-        value: products[index],
-        child: ProductItem(),
-      ),
-    );
+    return products.length == 0
+        ? Center(
+            child: Text('No Products To Display'),
+          )
+        : ListView.builder(
+            itemCount: products.length,
+            padding: const EdgeInsets.all(10.0),
+            itemBuilder: (_, index) => ChangeNotifierProvider.value(
+              value: products[index],
+              child: ProductItem(),
+            ),
+          );
   }
 }

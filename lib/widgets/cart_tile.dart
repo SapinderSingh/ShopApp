@@ -65,10 +65,14 @@ class CartTile extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 25,
+                  Container(
+                    height: 100,
+                    width: 200,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                   SizedBox(
