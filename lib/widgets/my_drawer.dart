@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/auth.dart';
 import 'package:shop_app/screens/orders_screen.dart';
 import 'package:shop_app/screens/product_overview_screen.dart';
 import 'package:shop_app/screens/user_products_screen.dart';
@@ -18,34 +20,54 @@ class MyDrawer extends StatelessWidget {
             iconData: Icons.shop,
             routeName: ProductsOverviewScreen.routeName,
           ),
-          Divider(),
+          const Divider(),
           listTileBuilder(
             ctx: context,
             title: 'Orders',
             iconData: Icons.payment,
             routeName: OrdersScreen.routeName,
           ),
-          Divider(),
+          const Divider(),
           listTileBuilder(
             ctx: context,
             title: 'Manage Products',
             iconData: Icons.category,
             routeName: UserProductsScreen.routeName,
           ),
+          const Divider(),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
+              Provider.of<Auth>(context, listen: false).logout();
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.logout,
+              ),
+              title: Text(
+                'Logout',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  InkWell listTileBuilder({
-    BuildContext ctx,
-    String title,
-    IconData iconData,
-    String routeName,
-  }) {
+  InkWell listTileBuilder(
+      {BuildContext ctx,
+      String title,
+      IconData iconData,
+      String routeName,
+      Function onTap}) {
     return InkWell(
       onTap: () {
-        Navigator.of(ctx).pushReplacementNamed(routeName);
+        if (routeName != null)
+          Navigator.of(ctx).pushReplacementNamed(routeName);
       },
       child: ListTile(
         leading: Icon(iconData),
